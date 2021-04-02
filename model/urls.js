@@ -11,5 +11,8 @@ module.exports = {
   },
   getLastKey: () => {
     return lastAddedKey;
+  },
+  getStorageSize: () => {
+    return Object.keys(storage).length;
   }
 }
