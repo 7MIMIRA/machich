@@ -4,26 +4,38 @@ const PORT = 8000;
 const controller = require('./controller.js');
 
 app.use(express.static('public'));
+app.use(express.json());
 
 app.get('/:url', (req, res) => {
-  controller.getURL(req.params.url)
-    .then(address => {
-      res.redirect(address);
-    })
-    .catch(err => {
-      console.error(err);
-      res.end();
-    })
+  let url = req.params.url;
+  if (url !== undefined) {
+    controller.getURL(req.params.url)
+      .then(address => {
+        if (address !== undefined) {
+          res.redirect(address);
+        } else {
+          throw 'Address returned for current key is undefined';
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        res.end();
+      })
+  }
 });
 
 app.post('/', (req, res) => {
   // TODO: Add URL validation before continuing to add to store of shortened URLs
-  controller.addURL(req.query.url)
+  controller.addURL(req.body.url)
     .then(newURL => {
-      res.send(`http://localhost:8000/${newURL}`);   // TODO set domain to an environment variable
+      if (newURL !== undefined) {
+        res.send(`http://localhost:8000/${newURL}`);   // TODO set domain to an environment variable
+      } else {
+        throw 'invalid URL passed in';
+      }
     })
     .catch((err) => {
-      console.error('invalid URL passed in');
+      console.error(err);
       res.end();
     });
 });
