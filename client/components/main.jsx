@@ -12,7 +12,7 @@ function Main() {
       <div className="mainBody">
         <div className="heading1">
           <h1>Machich</h1>
-          <h2>Voted best URL shortening service of 2020 by Jose Lopez</h2>
+          <h2>Voted best URL shortening service of 2021 by Jose Lopez</h2>
         </div>
         <Shortener />
       </div>
