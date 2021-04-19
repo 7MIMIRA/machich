@@ -29,7 +29,11 @@ app.post('/', (req, res) => {
   controller.addURL(req.body.url)
     .then(newURL => {
       if (newURL !== undefined) {
+<<<<<<< HEAD
         res.send(`machich.us/${newURL}`);   // TODO set domain to an environment variable
+=======
+        res.send(`http://machich.us/${newURL}`);   // TODO set domain to an environment variable
+>>>>>>> f204e58c464ce1b0bffeafe802e36c172ff60056
       } else {
         throw 'invalid URL passed in';
       }
