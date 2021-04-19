@@ -1,4 +1,71 @@
 body {
-  background-color: #253B3E;
-  color: #F0F1EC;
+  display: flex;
+  justify-content: center;
+  background-color: #d9d9d9;
+  margin: 0;
+}
+
+main {
+  width: 80%;
+  min-width: 600px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+input {
+  width: 200px;
+}
+
+button {
+  margin-left: 8px;
+}
+
+.navContainer {
+  /* height: 50px; */
+  width: 100%;
+  display: flex;
+  color: #2a97a6;
+  background-color: #ffffff;
+}
+
+.leftNavItems {
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.rightNavItems {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.mainBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.urlShortenerContainer {
+  padding-left: 20px;
+  height: 140px;
+  width: 300px;
+  border-radius: 8px;
+}
+
+.newURLContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.link:hover {
+  cursor: pointer;
+}
+
+.Rlink {
+  margin-left: 20px;
 }
