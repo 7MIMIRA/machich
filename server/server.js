@@ -26,11 +26,10 @@ app.get('/:url', (req, res) => {
 
 app.post('/', (req, res) => {
   // TODO: Add URL validation before continuing to add to store of shortened URLs
-  let domain = req.headers.origin;
   controller.addURL(req.body.url)
     .then(newURL => {
       if (newURL !== undefined) {
-        res.send(`${domain}/${newURL}`);   // TODO set domain to an environment variable
+        res.send(`http://machich.us/${newURL}`);   // TODO set domain to an environment variable
       } else {
         throw 'invalid URL passed in';
       }
