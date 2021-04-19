@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = 8000;
+const PORT = 80;
 const controller = require('./controller.js');
 
 app.use(express.static('public'));
@@ -26,10 +26,11 @@ app.get('/:url', (req, res) => {
 
 app.post('/', (req, res) => {
   // TODO: Add URL validation before continuing to add to store of shortened URLs
+  let domain = req.headers.origin;
   controller.addURL(req.body.url)
     .then(newURL => {
       if (newURL !== undefined) {
-        res.send(`http://localhost:8000/${newURL}`);   // TODO set domain to an environment variable
+        res.send(`${domain}/${newURL}`);   // TODO set domain to an environment variable
       } else {
         throw 'invalid URL passed in';
       }
