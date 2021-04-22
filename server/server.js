@@ -57,6 +57,6 @@ app.use((req, res) => {
 //   console.log(`listening on localhost:${PORT}`);
 // });
 
-app.listen(8000);
+app.listen(80);
 
-https.createServer(options, app).listen(8080);
+https.createServer(options, app).listen(443);
