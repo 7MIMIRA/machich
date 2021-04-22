@@ -48,7 +48,7 @@ app.post('/', (req, res) => {
 });
 
 app.listen(80, () => {
-  console.log(`listening on localhost:${PORT}`);
+  console.log(`listening on localhost:80`);
 });
 
 https.createServer(options, app).listen(443);
