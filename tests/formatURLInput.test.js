@@ -1,6 +1,6 @@
 const formatter = require('../utils/formatURLInput.js');
 
-test('Does nothing if input URL begins with http or https', () => {
+test('Does not modify input URL if it begins with http or https', () => {
   let url1 = 'http://google.com';
   let url2 = 'https://google.com';
   let result1 = formatter(url1);
@@ -9,7 +9,7 @@ test('Does nothing if input URL begins with http or https', () => {
   expect(result2).toBe(url2);
 });
 
-test('Adds http:// if input URL does not begin with http or https', () => {
+test('Prepends http:// to URL if it does not begin with http or https', () => {
   let url1 = 'google.com';
   let url2 = 'www.google.com';
   let result1 = formatter(url1);
