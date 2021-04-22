@@ -3,43 +3,60 @@ const app = express();
 const PORT = 80;
 const controller = require('./controller.js');
 
-app.use(express.static('public'));
-app.use(express.json());
+const https = require("https");
+const fs = require("fs");
 
-app.get('/:url', (req, res) => {
-  let url = req.params.url;
-  if (url !== undefined) {
-    controller.getURL(req.params.url)
-      .then(address => {
-        if (address !== undefined) {
-          res.redirect(address);
-        } else {
-          throw 'Address returned for current key is undefined';
-        }
-      })
-      .catch(err => {
-        console.error(err);
-        res.end();
-      })
-  }
+const options = {
+  key: fs.readFileSync("/srv/www/keys/my-site-key.pem"),
+  cert: fs.readFileSync("/srv/www/keys/chain.pem")
+};
+
+app.use((req, res) => {
+  res.writeHead(200);
+  res.end("hello world\n");
 });
 
-app.post('/', (req, res) => {
-  // TODO: Add URL validation before continuing to add to store of shortened URLs
-  controller.addURL(req.body.url)
-    .then(newURL => {
-      if (newURL !== undefined) {
-        res.send(`machich.app/${newURL}`);   // TODO set domain to an environment variable
-      } else {
-        throw 'invalid URL passed in';
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.end();
-    });
-});
+// app.use(express.static('public'));
+// app.use(express.json());
 
-app.listen(PORT, () => {
-  console.log(`listening on localhost:${PORT}`);
-});
+// app.get('/:url', (req, res) => {
+//   let url = req.params.url;
+//   if (url !== undefined) {
+//     controller.getURL(req.params.url)
+//       .then(address => {
+//         if (address !== undefined) {
+//           res.redirect(address);
+//         } else {
+//           throw 'Address returned for current key is undefined';
+//         }
+//       })
+//       .catch(err => {
+//         console.error(err);
+//         res.end();
+//       })
+//   }
+// });
+
+// app.post('/', (req, res) => {
+//   // TODO: Add URL validation before continuing to add to store of shortened URLs
+//   controller.addURL(req.body.url)
+//     .then(newURL => {
+//       if (newURL !== undefined) {
+//         res.send(`machich.app/${newURL}`);   // TODO set domain to an environment variable
+//       } else {
+//         throw 'invalid URL passed in';
+//       }
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       res.end();
+//     });
+// });
+
+// app.listen(PORT, () => {
+//   console.log(`listening on localhost:${PORT}`);
+// });
+
+app.listen(8000);
+
+https.createServer(options, app).listen(8080);
