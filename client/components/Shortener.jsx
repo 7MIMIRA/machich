@@ -53,6 +53,7 @@ function Shortener() {
       case 'key':
         setCustomKey(e.target.value);
         setNewURL('');
+        // TODO: Check whether new key is available for use
         break;
 
       default:
