@@ -1,4 +1,4 @@
-body {
+#root {
   display: flex;
   justify-content: center;
   margin: 0;
@@ -20,8 +20,42 @@ button {
   margin-left: 8px;
 }
 
+.inputDesc {
+  margin: 0;
+}
+
+.customPathExample {
+  margin: 0;
+  color:#757575;
+}
+
+.customURLButtonsContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.customKeyContainer {
+  margin-bottom: 16px;
+  right: 20px
+}
+
+.urlTypeButton {
+  margin: 10px;
+  padding: 2px 5px 2px 5px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+.urlTypeButton:hover {
+  cursor: pointer;
+}
+
+.Selected {
+  color: white;
+  background-color: rgb(60, 60, 60);
+}
+
 .navContainer {
-  /* height: 50px; */
   width: 100%;
   display: flex;
   color: #2a97a6;
@@ -50,10 +84,8 @@ button {
 }
 
 .urlShortenerContainer {
-  padding-left: 20px;
-  height: 140px;
-  width: 300px;
-  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
 }
 
 .newURLContainer {

@@ -9,8 +9,16 @@ const addURL = (url) => {
     url = formatURL(url);
     URL.add(key, url);
     resolve(key);
-  })
+  });
 }
+
+const addCustomURL = (key, url) => {
+  return new Promise((resolve, reject) => {
+    url = formatURL(url);
+    URL.addCustom(key, url);
+    resolve(key);
+  });
+};
 
 const getURL = (key) => {
   return new Promise((resolve, reject) => {
@@ -19,5 +27,11 @@ const getURL = (key) => {
   });
 };
 
+const keyAvailable = (key) => {
+  return URL.get(key) === undefined;
+};
+
 module.exports.addURL = addURL;
+module.exports.addCustomURL = addCustomURL;
 module.exports.getURL = getURL;
+module.exports.keyAvailable = keyAvailable;
