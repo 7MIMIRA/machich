@@ -18,7 +18,7 @@ function CopyTextField(props) {
     <div className="newURLContainer">
       <div>
         <form>
-          <input type="text"
+          <input type="text" readOnly
             ref={textAreaRef}
             value={newURL}
           />
