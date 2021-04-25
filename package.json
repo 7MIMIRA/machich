@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon server/server.js",
     "build": "webpack -w",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "db:reset": "node database/reset_tables.js"
   },
   "repository": {
     "type": "git",
@@ -21,8 +22,11 @@
   "dependencies": {
     "axios": "^0.21.1",
     "express": "^4.17.1",
+    "pg": "^8.6.0",
+    "pg-hstore": "^2.3.3",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "sequelize": "^6.6.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.0",
