@@ -65,12 +65,12 @@ function Shortener() {
   return (
     <div className="urlShortenerContainer">
       {!customURL && <div className="customURLButtonsContainer">
-        <div className="urlTypeButton Selected">Generated</div>
-        <div className="urlTypeButton" onClick={ (e) => {handleButtonClick(e, 'swapURLType')} }>Custom</div>
+        <div className="urlTypeButton Selected">Generate Link</div>
+        <div className="urlTypeButton" onClick={ (e) => {handleButtonClick(e, 'swapURLType')} }>Custom Link</div>
       </div>}
       {customURL && <div className="customURLButtonsContainer">
-        <div className="urlTypeButton" onClick={ (e) => {handleButtonClick(e, 'swapURLType')} }>Generated</div>
-        <div className="urlTypeButton Selected">Custom</div>
+        <div className="urlTypeButton" onClick={ (e) => {handleButtonClick(e, 'swapURLType')} }>Generate Link</div>
+        <div className="urlTypeButton Selected">Custom Link</div>
       </div>}
 
       <form onSubmit={ (e) => {handleButtonClick(e, 'shortenURL')} }>
