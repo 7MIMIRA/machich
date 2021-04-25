@@ -83,7 +83,7 @@ function Shortener() {
       {customURL && <div className="customKeyContainer">
         <p className="inputDesc">Custom Path</p>
         <input className="keyField" type="text" onChange={ (e) => {handleTextFieldChange(e, 'key')} } value={ customKey }/>
-        <p className="customPathExample">{window.location.host}/path</p>
+        <p className="customPathExample">{window.location.host}/custom_path</p>
       </div>}
 
       {newURL && <CopyTextField newURL={ newURL } />}
