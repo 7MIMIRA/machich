@@ -2,3 +2,7 @@ node_modules
 bundle*
 .DS_Store
 coverage/*
+.env
+*.cert
+*.key
+*.pem
