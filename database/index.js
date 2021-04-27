@@ -1,5 +1,6 @@
+require('dotenv').config();
 const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('machich', '', '', { host: 'localhost', dialect: 'postgres' });
+const sequelize = new Sequelize('machich', process.env.DB_MACHICH_USER || '', process.env.DB_MACHICH_USER || '', { host: 'localhost', dialect: 'postgres' });
 
 const URL = sequelize.define('url', {
   key: {
