@@ -24,7 +24,11 @@ function Shortener() {
         if (URL !== '' && customURL === false || URL !== '' && customKey !== '' && customURL === true) {
           axios({ method: 'post', url: '/', data: { url: URL, custom: customURL, key: customKey } })
           .then(result => {
-            setNewURL(result.data);
+            if (result.data === 'path_in_use') {
+              alert('Path already in use!\n\nMake another selection.');
+            } else {
+              setNewURL(result.data);
+            }
           })
           .catch(err => {
             console.error(err);

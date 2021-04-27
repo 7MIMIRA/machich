@@ -9,7 +9,7 @@ router.post('/', (req, res) => {
     controller.addURL(req.body.url)
       .then(newURL => {
         if (newURL !== undefined) {
-          res.send(`${domain}/${newURL}`);   // TODO set domain to an environment variable
+          res.send(`${domain}/${newURL}`);
         } else {
           throw 'invalid URL passed in';
         }
@@ -22,9 +22,9 @@ router.post('/', (req, res) => {
     controller.addCustomURL(req.body.key, req.body.url)
       .then(newURL => {
         if (newURL !== undefined) {
-          res.send(`${domain}/${newURL}`);   // TODO set domain to an environment variable
+          res.send(`${domain}/${newURL}`);
         } else {
-          throw 'invalid URL passed in';
+          res.end('path_in_use');
         }
       })
       .catch((err) => {
