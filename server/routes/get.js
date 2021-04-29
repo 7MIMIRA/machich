@@ -2,10 +2,18 @@ const express = require('express');
 const router = express.Router();
 const controller = require('../controller.js');
 
-router.get('/:url', (req, res) => {
-  let url = req.params.url;
+router.get('/*', (req, res) => {
+  let url = '';
+  Object.keys(req.params).forEach(key => {
+    if (key === '0') {
+      url += req.params[key];
+    } else {
+      url += '/' + req.params[key];
+    }
+  });
+
   if (url !== undefined) {
-    controller.getURL(req.params.url)
+    controller.getURL(url)
       .then(address => {
         if (address !== undefined) {
           res.redirect(address);
@@ -17,6 +25,8 @@ router.get('/:url', (req, res) => {
         console.error(err);
         res.end();
       })
+  } else {
+    res.end();
   }
 });
 
